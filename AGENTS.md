@@ -8,7 +8,8 @@ Interactive Redis CLI viewer. Go 1.25, module `redis-viewer`.
 
 - `cmd/redis-viewer/rv.go` -- entrypoint (bubbletea TUI). `main.go` at root is a GoLand template placeholder, not the app.
 - `internal/ui/` -- bubbletea Model/Update/View split across `model.go`, `update.go`, `view.go`. Never use `fmt.Print*` inside `View()` -- it corrupts bubbletea's terminal rendering.
-- `internal/ui/ui-components/` -- reusable UI pieces (e.g. `banners.go`). Banner is centered via `lipgloss.Place` using terminal width/height from `tea.WindowSizeMsg`.
+- `internal/ui/ui-components/` -- stateless rendering functions (e.g. `banners.go`, `addNewConnection.go`). Centered via `lipgloss.Place` using terminal width/height from `tea.WindowSizeMsg`.
+- `internal/ui/forms/` -- form structs with their own `Update`/`CycleFocus`/`ResetFocus` methods (e.g. `ConnectionForm`). Forms hold named `textinput.Model` fields (not arrays with index constants). The parent `Update()` must forward `tea.Msg` into the active form's `Update()` for inputs to work.
 - `internal/redis/protocol.go` -- `AdapterRedisProtocol` interface (the port)
 - `internal/redis/go-redis/` -- adapter implementation using `redis/go-redis/v9`
 - `internal/cmd/` -- command types (`RedisCmdData`, `SetOptions`)

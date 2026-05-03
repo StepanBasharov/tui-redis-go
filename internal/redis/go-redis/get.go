@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+
 	"redis-viewer/internal/cmd"
 
 	"github.com/redis/go-redis/v9"

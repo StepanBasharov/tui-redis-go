@@ -28,4 +28,12 @@ var (
 			Border(lipgloss.RoundedBorder()).
 			BorderForeground(accentDim).
 			Padding(0, 2)
+
+	titleStyle = lipgloss.NewStyle().
+			Foreground(redisRed).
+			Bold(true).
+			MarginBottom(1)
+
+	separatorStyle = lipgloss.NewStyle().
+			Foreground(lipgloss.Color("#444444"))
 )

@@ -29,7 +29,7 @@ func RenderBanner(width, height, activeConnections int) string {
 
 	hints := "\n" +
 		hintKeyStyle.
-			Render("  Ctrl-a") + hintTextStyle.
+			Render("  Ctrl-n") + hintTextStyle.
 		Render("  add new connection") + "\n" +
 		hintKeyStyle.
 			Render("  Ctrl-l") + hintTextStyle.

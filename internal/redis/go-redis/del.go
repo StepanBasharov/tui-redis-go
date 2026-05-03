@@ -3,8 +3,9 @@ package go_redis
 import (
 	"context"
 	"fmt"
-	"redis-viewer/internal/cmd"
 	"strconv"
+
+	"redis-viewer/internal/cmd"
 )
 
 // DelValue executes a DEL command for one or more keys from data.KeysForDeletion.
