@@ -1,0 +1,15 @@
+# Binaries
+redis-viewer
+*.exe
+
+# Test and coverage
+*.test
+coverage.out
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
