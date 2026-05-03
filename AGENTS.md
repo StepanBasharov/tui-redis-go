@@ -12,7 +12,7 @@ Interactive Redis CLI viewer. Go 1.25, module `redis-viewer`.
 - `internal/ui/forms/` -- form structs with their own `Update`/`CycleFocus`/`ResetFocus` methods (e.g. `ConnectionForm`). Forms hold named `textinput.Model` fields (not arrays with index constants). The parent `Update()` must forward `tea.Msg` into the active form's `Update()` for inputs to work.
 - `internal/redis/protocol.go` -- `AdapterRedisProtocol` interface (the port)
 - `internal/redis/go-redis/` -- adapter implementation using `redis/go-redis/v9`
-- `internal/cmd/` -- command types (`RedisCmdData`, `SetOptions`)
+- `internal/cmd/` -- command types (`RedisCmdData`, `SetOptions`, `RedisCmdOut`)
 - `internal/processor/` -- parses user input into `RedisCmdData` and calls the adapter. One file per command: `setCmd.go`, `getCmd.go`, `delCmd.go`, etc. Tests follow the same split: `setCmd_test.go`, `getCmd_test.go`, `delCmd_test.go`.
 
 ## Commands
@@ -41,3 +41,5 @@ docker compose -f docker/docker-compose.yml up -d   # localhost:6379
 - DEL stores all keys in `RedisCmdData.KeysForDeletion` (not `Key`/`Value`)
 - Sentinel errors per package (e.g. `ErrNotEnoughArgs`, `ErrInvalidSetOptions` in processor)
 - Constructor `NewRedisAdapter` takes `context.Context` as first param
+- EXISTS and EXPIRE processor handlers are stubs (no-ops); adapter methods have commented-out implementations
+- All comments must be in English (no Russian/Cyrillic)

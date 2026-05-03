@@ -29,9 +29,7 @@ func buildDelCmd(rCmd *cmd.RedisCmdData, tokens []string) error {
 
 	rCmd.KeysForDeletion = make([]string, 0, len(tokens))
 
-	for _, t := range tokens {
-		rCmd.KeysForDeletion = append(rCmd.KeysForDeletion, t)
-	}
+	rCmd.KeysForDeletion = append(rCmd.KeysForDeletion, tokens...)
 
 	return nil
 }

@@ -1,7 +1,10 @@
 package ui
 
 import (
+	"context"
 	"log"
+	"redis-viewer/internal/processor"
+	"strings"
 
 	tea "github.com/charmbracelet/bubbletea"
 )
@@ -14,6 +17,7 @@ func (m ViewerModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case tea.WindowSizeMsg:
 		m.width = msg.Width
 		m.height = msg.Height
+		m.connList.SetSize(msg.Width-4, msg.Height-4)
 
 	// key presses
 	case tea.KeyMsg:
@@ -50,13 +54,63 @@ func (m ViewerModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 				connection, err := NewConnection(hostForm, portForm, passwordForm, databaseFrom)
 				if err != nil {
-					//
+					// TODO: popup with error
 					return m, nil
 				}
 
-				m.connections = append(m.connections, connection)
+				addr := connection.Client.GetRedisAdd()
+
+				if _, ok := m.connections[addr]; !ok {
+					m.connections[addr] = connection
+				}
+
 				m.setAddNewConnection = false
 				m.connForm.ResetForm()
+				m.syncConnList()
+
+				return m, nil
+			}
+
+			if m.setListOfConnection {
+				if item, ok := m.connList.SelectedItem().(ConnectionItem); ok {
+					addr := item.Addr
+
+					if conn, ok := m.connections[addr]; ok {
+						m.currentConnection = conn
+						m.setWorkspace = true
+						m.setListOfConnection = false
+						m.cmdInput.Focus()
+					} else {
+						panic("connection not found")
+					}
+				}
+			}
+
+			if m.setWorkspace {
+				command := strings.TrimSpace(m.cmdInput.Value())
+				m.cmdInput.Reset()
+
+				if command == "" {
+					return m, nil
+				}
+
+				if command == "clear" {
+					m.currentConnection.History = m.currentConnection.History[:0]
+
+					return m, nil
+				}
+
+				prc := processor.NewProcessor(m.currentConnection.Client)
+
+				out := prc.ProcessCmd(context.Background(), command)
+
+				m.currentConnection.History = append(
+					m.currentConnection.History,
+					History{
+						cmdHist: command,
+						resHist: string(out.Data),
+					},
+				)
 
 				return m, nil
 			}
@@ -64,6 +118,8 @@ func (m ViewerModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "esc":
 			m.setAddNewConnection = false
 			m.setListOfConnection = false
+			m.setWorkspace = false
+			m.currentConnection = nil
 			return m, nil
 
 		case "tab":
@@ -87,6 +143,19 @@ func (m ViewerModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	// forward messages to the active form input
 	if m.setAddNewConnection {
 		cmd := m.connForm.Update(msg)
+		return m, cmd
+	}
+
+	// forward messages to the connections list
+	if m.setListOfConnection {
+		var cmd tea.Cmd
+		m.connList, cmd = m.connList.Update(msg)
+		return m, cmd
+	}
+
+	if m.setWorkspace {
+		var cmd tea.Cmd
+		m.cmdInput, cmd = m.cmdInput.Update(msg)
 		return m, cmd
 	}
 
