@@ -6,6 +6,7 @@ import (
 	"github.com/charmbracelet/lipgloss"
 )
 
+// RenderListOfConnections renders the active connections list screen.
 func RenderListOfConnections(
 	width, height int,
 	conns []string,

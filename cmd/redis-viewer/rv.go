@@ -1,3 +1,4 @@
+// Command redis-viewer launches the interactive Redis TUI.
 package main
 
 import (

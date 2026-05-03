@@ -8,16 +8,19 @@ import (
 	go_redis "redis-viewer/internal/redis/go-redis"
 )
 
+// History records a single command and its response.
 type History struct {
 	cmdHist string
 	resHist string
 }
 
+// Connection pairs a Redis adapter with its command history.
 type Connection struct {
 	Client  redis.AdapterRedisProtocol
 	History []History
 }
 
+// NewConnection dials a Redis instance and returns a Connection.
 func NewConnection(host, port, password, database string) (*Connection, error) {
 	portInt, err := strconv.Atoi(port)
 	if err != nil {

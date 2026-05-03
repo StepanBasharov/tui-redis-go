@@ -99,6 +99,7 @@ func (p *Processor) pickCommand(firstToken string) (cmd.RedisCmdData, error) {
 	}
 }
 
+// Close shuts down the underlying Redis adapter connection.
 func (p *Processor) Close() error {
 	return p.client.Close()
 }

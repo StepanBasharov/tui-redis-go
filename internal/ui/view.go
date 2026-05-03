@@ -2,6 +2,7 @@ package ui
 
 import "redis-viewer/internal/ui/ui-components"
 
+// View renders the current screen based on model state.
 func (m ViewerModel) View() string {
 	if m.setAddNewConnection {
 		return ui_components.RenderAddNewConnection(

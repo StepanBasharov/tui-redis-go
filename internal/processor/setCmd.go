@@ -42,9 +42,9 @@ func buildSetCmd(rCmd *cmd.RedisCmdData, tokens []string) error {
 	return nil
 }
 
-// parseSetOptions iterates over tokens after key/value and populates Options.
-// Supported flags: NX, XX, EX <seconds>. Returns ErrInvalidSetOptions on
-// unknown flags or malformed values.
+// parseSetOptions iterates over tokens after key/value and populates SetOptions.
+// Currently supports NX, XX, and EX <seconds>.
+// Returns ErrInvalidSetOptions on unknown flags or malformed values.
 func parseSetOptions(tokens []string) (cmd.SetOptions, error) {
 	var opts cmd.SetOptions
 

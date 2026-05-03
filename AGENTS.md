@@ -26,6 +26,9 @@ go test ./...
 
 # single package
 go test -v ./internal/processor/
+
+# local Redis for manual testing
+docker compose -f docker/docker-compose.yml up -d   # localhost:6379
 ```
 
 ## Conventions

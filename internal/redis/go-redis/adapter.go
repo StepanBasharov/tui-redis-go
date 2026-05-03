@@ -48,6 +48,7 @@ func NewRedisAdapter(ctx context.Context, host string, port int, password string
 	}, nil
 }
 
+// GetRedisAdd returns the address string "host:port/db" for display.
 func (a *RedisAdapter) GetRedisAdd() string {
 	return fmt.Sprintf("%s:%d/%d", a.host, a.port, a.db)
 }

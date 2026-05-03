@@ -37,7 +37,6 @@ func (a *RedisAdapter) SetValue(ctx context.Context, data cmd.RedisCmdData) (cmd
 
 	res, err := a.client.SetArgs(ctx, data.Key, data.Value, setArgs).Result()
 	if err != nil {
-		fmt.Println(err.Error())
 		return cmd.RedisCmdOut{}, fmt.Errorf("%w: %w", ErrSetValue, err)
 	}
 

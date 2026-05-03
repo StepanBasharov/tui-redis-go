@@ -2,6 +2,7 @@ package go_redis
 
 import "errors"
 
+// Sentinel errors returned by RedisAdapter methods.
 var (
 	ErrFailedConnect = errors.New("failed to connect to redis")
 	ErrCloseConn     = errors.New("failed to close connection")

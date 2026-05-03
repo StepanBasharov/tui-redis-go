@@ -1,9 +1,10 @@
+// Package ui_components provides stateless rendering helpers for TUI screens.
 package ui_components
 
 import "github.com/charmbracelet/lipgloss"
 
 var (
-	// Redis brand red + lighter accent for the gradient effect.
+	// Color palette: Redis red, Go cyan, and dim accents for the TUI.
 	redisRed   = lipgloss.Color("#D82C20")
 	redisLight = lipgloss.Color("#00ADD8")
 	hintColor  = lipgloss.Color("#888888")

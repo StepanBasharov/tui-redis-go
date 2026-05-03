@@ -1,3 +1,4 @@
+// Package ui implements the bubbletea TUI for redis-viewer.
 package ui
 
 import (
@@ -6,27 +7,29 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 )
 
+// ViewerModel is the top-level bubbletea model for the TUI.
 type ViewerModel struct {
 	connections []*Connection
 
-	// состояние
+	// state
 	cursor              int
 	setAddNewConnection bool
 	setListOfConnection bool
 	Items               []string
 
-	// форма нового подключения
+	// new connection form
 	connForm forms.ConnectionForm
 
-	// системное
+	// terminal dimensions
 	width  int
 	height int
 
-	// статус
+	// status
 	loading bool
 	err     error
 }
 
+// InitialViewerModel returns a zero-state ViewerModel ready for tea.NewProgram.
 func InitialViewerModel() ViewerModel {
 	model := ViewerModel{}
 	model.connForm = forms.NewConnectionForm(model.width)
@@ -34,6 +37,7 @@ func InitialViewerModel() ViewerModel {
 	return model
 }
 
+// Init satisfies tea.Model; no initial command is needed.
 func (m ViewerModel) Init() tea.Cmd {
 	return nil
 }

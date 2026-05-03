@@ -6,15 +6,16 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 )
 
+// Update handles all incoming messages for ViewerModel.
 func (m ViewerModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 
-	// resize терминала
+	// terminal resize
 	case tea.WindowSizeMsg:
 		m.width = msg.Width
 		m.height = msg.Height
 
-	// клавиши
+	// key presses
 	case tea.KeyMsg:
 		switch msg.String() {
 
@@ -83,7 +84,7 @@ func (m ViewerModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		}
 	}
 
-	// пробрасываем сообщения в активный инпут формы
+	// forward messages to the active form input
 	if m.setAddNewConnection {
 		cmd := m.connForm.Update(msg)
 		return m, cmd

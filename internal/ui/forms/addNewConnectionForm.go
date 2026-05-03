@@ -1,3 +1,4 @@
+// Package forms provides bubbletea form structs for user input screens.
 package forms
 
 import (
@@ -37,6 +38,7 @@ func (f *ConnectionForm) ResetFocus() tea.Cmd {
 	return f.Host.Focus()
 }
 
+// ResetForm clears all input field values.
 func (f *ConnectionForm) ResetForm() {
 	f.Host.Reset()
 	f.Port.Reset()
@@ -52,6 +54,7 @@ func (f *ConnectionForm) Update(msg tea.Msg) tea.Cmd {
 	return cmd
 }
 
+// NewConnectionForm creates a ConnectionForm with default placeholders.
 func NewConnectionForm(width int) ConnectionForm {
 	host := textinput.New()
 	host.Placeholder = "Redis host"

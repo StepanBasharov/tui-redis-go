@@ -7,6 +7,7 @@ import (
 	"github.com/charmbracelet/lipgloss"
 )
 
+// RenderAddNewConnection renders the "add new connection" form screen.
 func RenderAddNewConnection(
 	width,
 	height int,
