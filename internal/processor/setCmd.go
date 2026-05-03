@@ -6,9 +6,10 @@ import (
 	"strconv"
 	"time"
 
-	"redis-viewer/internal/cmd"
+	"github.com/StepanBasharov/tui-redis-go/internal/cmd"
 )
 
+// processSet builds and executes a SET command from the given tokens.
 func (p *Processor) processSet(ctx context.Context, rCmd cmd.RedisCmdData, tokens []string) (cmd.RedisCmdOut, error) {
 	if err := buildSetCmd(&rCmd, tokens); err != nil {
 		return cmd.RedisCmdOut{}, err

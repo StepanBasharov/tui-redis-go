@@ -3,7 +3,7 @@ package go_redis
 import (
 	"context"
 
-	"redis-viewer/internal/cmd"
+	"github.com/StepanBasharov/tui-redis-go/internal/cmd"
 )
 
 // Exists checks whether a key exists. Not yet implemented.

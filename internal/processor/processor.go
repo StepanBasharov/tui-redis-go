@@ -7,9 +7,9 @@ import (
 	"fmt"
 	"strings"
 
-	"redis-viewer/internal/cmd"
+	"github.com/StepanBasharov/tui-redis-go/internal/cmd"
 
-	"redis-viewer/internal/redis"
+	"github.com/StepanBasharov/tui-redis-go/internal/redis"
 )
 
 // Processor holds a reference to the Redis adapter and exposes ProcessCmd

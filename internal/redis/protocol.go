@@ -5,7 +5,7 @@ package redis
 import (
 	"context"
 
-	"redis-viewer/internal/cmd"
+	"github.com/StepanBasharov/tui-redis-go/internal/cmd"
 )
 
 // AdapterRedisProtocol is the port that any Redis client adapter must satisfy.

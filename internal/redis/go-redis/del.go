@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"redis-viewer/internal/cmd"
+	"github.com/StepanBasharov/tui-redis-go/internal/cmd"
 )
 
 // DelValue executes a DEL command for one or more keys from data.KeysForDeletion.

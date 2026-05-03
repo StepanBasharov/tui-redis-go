@@ -3,7 +3,7 @@ package go_redis
 import (
 	"context"
 
-	"redis-viewer/internal/cmd"
+	"github.com/StepanBasharov/tui-redis-go/internal/cmd"
 )
 
 // Expire sets a TTL on a key. Not yet implemented.

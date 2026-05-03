@@ -4,8 +4,8 @@ import (
 	"context"
 	"strconv"
 
-	"redis-viewer/internal/redis"
-	go_redis "redis-viewer/internal/redis/go-redis"
+	"github.com/StepanBasharov/tui-redis-go/internal/redis"
+	go_redis "github.com/StepanBasharov/tui-redis-go/internal/redis/go-redis"
 )
 
 // ConnectionItem adapts a connection address for use with bubbles/list.

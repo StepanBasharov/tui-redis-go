@@ -4,7 +4,7 @@ import (
 	"errors"
 	"testing"
 
-	"redis-viewer/internal/cmd"
+	"github.com/StepanBasharov/tui-redis-go/internal/cmd"
 )
 
 func TestBuildGetCmd(t *testing.T) {

@@ -4,9 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	"redis-viewer/internal/cmd"
+	"github.com/StepanBasharov/tui-redis-go/internal/cmd"
 )
 
+// processDel builds and executes a DEL command from the given tokens.
 func (p *Processor) processDel(ctx context.Context, rCmd cmd.RedisCmdData, tokens []string) (cmd.RedisCmdOut, error) {
 	if err := buildDelCmd(&rCmd, tokens); err != nil {
 		return cmd.RedisCmdOut{}, err

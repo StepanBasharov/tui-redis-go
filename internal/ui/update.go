@@ -3,8 +3,9 @@ package ui
 import (
 	"context"
 	"log"
-	"redis-viewer/internal/processor"
 	"strings"
+
+	"github.com/StepanBasharov/tui-redis-go/internal/processor"
 
 	tea "github.com/charmbracelet/bubbletea"
 )
@@ -30,11 +31,6 @@ func (m ViewerModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				}
 			}
 			return m, tea.Quit
-
-		case "q":
-			if !m.setAddNewConnection {
-				return m, tea.Quit
-			}
 
 		case "ctrl+n":
 			m.setAddNewConnection = true

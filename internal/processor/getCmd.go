@@ -4,9 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	"redis-viewer/internal/cmd"
+	"github.com/StepanBasharov/tui-redis-go/internal/cmd"
 )
 
+// processGet builds and executes a GET command from the given tokens.
 func (p *Processor) processGet(ctx context.Context, rCmd cmd.RedisCmdData, tokens []string) (cmd.RedisCmdOut, error) {
 	if err := buildGetCmd(&rCmd, tokens); err != nil {
 		return cmd.RedisCmdOut{}, err

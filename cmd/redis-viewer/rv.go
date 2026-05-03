@@ -1,10 +1,10 @@
-// Command redis-viewer launches the interactive Redis TUI.
+// Command tui-redis-go launches the interactive Redis TUI.
 package main
 
 import (
 	"fmt"
 
-	"redis-viewer/internal/ui"
+	"github.com/StepanBasharov/tui-redis-go/internal/ui"
 
 	tea "github.com/charmbracelet/bubbletea"
 )

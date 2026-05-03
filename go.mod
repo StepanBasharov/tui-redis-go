@@ -1,4 +1,4 @@
-module redis-viewer
+module github.com/StepanBasharov/tui-redis-go
 
 go 1.25
 

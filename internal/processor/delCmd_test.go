@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"redis-viewer/internal/cmd"
+	"github.com/StepanBasharov/tui-redis-go/internal/cmd"
 )
 
 func TestBuildDelCmd(t *testing.T) {

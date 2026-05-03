@@ -1,6 +1,8 @@
-# redis-viewer
+# TuiRedisGO
 
 Interactive Redis TUI built with [bubbletea](https://github.com/charmbracelet/bubbletea) and [lipgloss](https://github.com/charmbracelet/lipgloss).
+
+![demo](tuiredisgo.gif)
 
 ## Requirements
 
@@ -21,17 +23,20 @@ go run ./cmd/redis-viewer
 
 ## Keyboard shortcuts
 
-| Key      | Action                  |
-|----------|-------------------------|
-| `Ctrl-n` | Add new connection      |
-| `Ctrl-l` | List active connections |
-| `Ctrl-c` | Quit                    |
-| `q`      | Quit (from main screen) |
-| `Esc`    | Back                    |
-| `Tab`    | Next field (in forms)   |
-| `Enter`  | Confirm / connect       |
+| Key      | Action                             |
+|----------|------------------------------------|
+| `Ctrl-n` | Add new connection                 |
+| `Ctrl-l` | List active connections            |
+| `Ctrl-c` | Quit                               |
+| `Esc`    | Back / return to main screen       |
+| `Tab`    | Next field (in connection form)    |
+| `Enter`  | Confirm / connect / execute command|
+| `Up`     | Scroll up in menu                  |
+| `Down`   | Scroll down in menu                |
 
 ## Supported commands
+
+Type commands in the workspace after connecting to a Redis instance.
 
 | Command  | Syntax                              | Description                       |
 |----------|-------------------------------------|-----------------------------------|
@@ -40,6 +45,7 @@ go run ./cmd/redis-viewer
 | `DEL`    | `DEL key [key ...]`                 | Delete one or more keys           |
 | `EXISTS` | `EXISTS key`                        | Check if a key exists (stub)      |
 | `EXPIRE` | `EXPIRE key seconds`               | Set a TTL on a key (stub)         |
+| `clear`  |                                     | Clear command history             |
 
 ### SET options
 

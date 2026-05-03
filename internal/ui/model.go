@@ -1,8 +1,8 @@
-// Package ui implements the bubbletea TUI for redis-viewer.
+// Package ui implements the bubbletea TUI for tui-redis-go.
 package ui
 
 import (
-	"redis-viewer/internal/ui/forms"
+	"github.com/StepanBasharov/tui-redis-go/internal/ui/forms"
 
 	"github.com/charmbracelet/bubbles/list"
 	"github.com/charmbracelet/bubbles/textinput"
@@ -22,9 +22,9 @@ type ViewerModel struct {
 	Items               []string
 
 	// new connection form
-	connForm  forms.ConnectionForm
-	connList  list.Model
-	cmdInput  textinput.Model
+	connForm forms.ConnectionForm
+	connList list.Model
+	cmdInput textinput.Model
 
 	// terminal dimensions
 	width  int

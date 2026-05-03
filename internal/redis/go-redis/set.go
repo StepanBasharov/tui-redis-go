@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"redis-viewer/internal/cmd"
+	"github.com/StepanBasharov/tui-redis-go/internal/cmd"
 
 	"github.com/redis/go-redis/v9"
 )
