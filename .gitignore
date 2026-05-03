@@ -1,5 +1,4 @@
 # Binaries
-redis-viewer
 *.exe
 
 # Test and coverage
