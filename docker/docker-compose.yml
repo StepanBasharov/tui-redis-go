@@ -1,3 +1,5 @@
+# Redis in Docker for debug
+# TODO: make integrations tests with redis instance in docker
 services:
   redis:
     image: redis:7-alpine

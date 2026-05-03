@@ -17,5 +17,6 @@ type AdapterRedisProtocol interface {
 	DelValue(ctx context.Context, data cmd.RedisCmdData) (cmd.RedisCmdOut, error)
 	Expire(ctx context.Context, data cmd.RedisCmdData) (cmd.RedisCmdOut, error)
 	Exists(ctx context.Context, data cmd.RedisCmdData) (cmd.RedisCmdOut, error)
+	GetRedisAdd() string
 	Close() error
 }
