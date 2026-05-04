@@ -19,13 +19,13 @@ const (
 // Depending on the command, different fields are populated:
 //   - SET uses Key, Value, and SetOpts.
 //   - GET uses Key.
-//   - DEL uses KeysForDeletion (one or more keys).
-//   - EXISTS uses Key.
+//   - DEL uses Keys (one or more keys).
+//   - EXISTS uses Keys (one or more keys).
 //   - EXPIRE uses Key (options TBD).
 type RedisCmdData struct {
 	Command         RedisCmd
 	Key             string
-	KeysForDeletion []string
+	Keys []string
 	Value           interface{}
 	SetOpts         SetOptions
 }

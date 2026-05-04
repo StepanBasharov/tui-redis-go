@@ -67,9 +67,12 @@ func (p *Processor) ProcessCmd(ctx context.Context, command string) cmd.RedisCmd
 		return out
 
 	case cmd.RedisExists:
-		if err := p.processExists(ctx, cmdData, cmdTokens); err != nil {
+		out, err := p.processExists(ctx, cmdData, cmdTokens)
+		if err != nil {
 			return cmd.RedisCmdOut{Data: []byte(err.Error())}
 		}
+
+		return out
 
 	case cmd.RedisExpire:
 		if err := p.processExpire(ctx, cmdData, cmdTokens); err != nil {

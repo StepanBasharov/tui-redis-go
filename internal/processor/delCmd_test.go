@@ -52,8 +52,8 @@ func TestBuildDelCmd(t *testing.T) {
 				t.Fatalf("unexpected error: %v", err)
 			}
 
-			if fmt.Sprintf("%v", rCmd.KeysForDeletion) != fmt.Sprintf("%v", tt.wantKeys) {
-				t.Errorf("KeysForDeletion = %v, want %v", rCmd.KeysForDeletion, tt.wantKeys)
+			if fmt.Sprintf("%v", rCmd.Keys) != fmt.Sprintf("%v", tt.wantKeys) {
+				t.Errorf("Keys = %v, want %v", rCmd.Keys, tt.wantKeys)
 			}
 		})
 	}

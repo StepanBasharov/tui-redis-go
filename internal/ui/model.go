@@ -42,7 +42,12 @@ func InitialViewerModel() ViewerModel {
 
 	cmdInput := textinput.New()
 	cmdInput.Placeholder = "type a Redis command..."
+	cmdInput.ShowSuggestions = true
+	cmdInput.SetSuggestions([]string{
+		"SET", "GET", "DEL", "EXISTS", "EXPIRE", "KEYS", "TTL", "PING",
+	})
 	cmdInput.Width = 60
+
 	model.cmdInput = cmdInput
 
 	return model

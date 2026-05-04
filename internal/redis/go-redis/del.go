@@ -8,9 +8,9 @@ import (
 	"github.com/StepanBasharov/tui-redis-go/internal/cmd"
 )
 
-// DelValue executes a DEL command for one or more keys from data.KeysForDeletion.
+// DelValue executes a DEL command for one or more keys from data.Keys.
 func (a *RedisAdapter) DelValue(ctx context.Context, data cmd.RedisCmdData) (cmd.RedisCmdOut, error) {
-	res, err := a.client.Del(ctx, data.KeysForDeletion...).Result()
+	res, err := a.client.Del(ctx, data.Keys...).Result()
 	if err != nil {
 		return cmd.RedisCmdOut{}, fmt.Errorf("%w: %w", ErrDelValue, err)
 	}
